@@ -9,8 +9,7 @@ from datetime import datetime
 from model.vgg_models import Back_VGG
 from data import get_loader
 from utils import clip_gradient,adjust_lr
-import os
-from scipy import misc
+import os, cv2
 import smoothness
 os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
@@ -54,7 +53,7 @@ def visualize_prediction1(pred):
         pred_edge_kk = pred_edge_kk.astype(np.uint8)
         save_path = './temp/'
         name = '{:02d}_sal1.png'.format(kk)
-        misc.imsave(save_path + name, pred_edge_kk)
+        cv2.imwrite(save_path + name, pred_edge_kk)
 
 def visualize_prediction2(pred):
     for kk in range(pred.shape[0]):
@@ -65,7 +64,7 @@ def visualize_prediction2(pred):
         pred_edge_kk = pred_edge_kk.astype(np.uint8)
         save_path = './temp/'
         name = '{:02d}_sal2.png'.format(kk)
-        misc.imsave(save_path + name, pred_edge_kk)
+        cv2.imwrite(save_path + name, pred_edge_kk)
 
 def visualize_edge(pred):
     for kk in range(pred.shape[0]):
@@ -76,7 +75,7 @@ def visualize_edge(pred):
         pred_edge_kk = pred_edge_kk.astype(np.uint8)
         save_path = './temp/'
         name = '{:02d}_edge.png'.format(kk)
-        misc.imsave(save_path + name, pred_edge_kk)
+        cv2.imwrite(save_path + name, pred_edge_kk)
 
 def train(train_loader, model, optimizer, epoch):
     model.train()
