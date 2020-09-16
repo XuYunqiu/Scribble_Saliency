@@ -3,7 +3,7 @@ import torch.nn as nn
 import numpy as np
 import cv2
 import torch.nn.functional as F
-from vgg import B2_VGG
+from .vgg import B2_VGG
 
 ## Channel Attention (CA) Layer
 class CALayer(nn.Module):
